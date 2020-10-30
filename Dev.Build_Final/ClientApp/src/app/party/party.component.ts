@@ -25,28 +25,26 @@ export class PartyComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.refresh();
-    
-  }
-  refresh() {
     this.party.getAllParty().subscribe(
       (data: party[]) =>
         this.partyList = data
-    );
+    ); 
   }
 
   checkbox(item:party) {
     this.party.toggleDone(item);
-    this.ngOnInit();
+    setTimeout(() => { this.ngOnInit() }, 200);
   }
 
   newItem() {
     this.party.newPartyItem(this.newPartyItem);
-    this.newPartyItem.description=''
+    this.newPartyItem.description = ''
+    setTimeout(() => { this.ngOnInit() }, 200);
   }
 
   removeEvent(item:party) {
     this.party.removePartyItem(item);
+    setTimeout(() => { this.ngOnInit() }, 200);
   }
 
 }

@@ -33,10 +33,12 @@ export class PeopleComponent implements OnInit {
     this.people.AddPerson(this.newPerson);
     this.newPerson.firstname = '';
     this.newPerson.lastname = '';
+    setTimeout(() => { this.ngOnInit() }, 200);
   }
 
   removePerson(person: people) {
     this.people.removePerson(person);
+    setTimeout(() => { this.ngOnInit() }, 200);
   }
 
 

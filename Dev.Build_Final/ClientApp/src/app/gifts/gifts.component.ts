@@ -33,7 +33,7 @@ export class GiftsComponent implements OnInit {
 
   checkbox(item: gift) {
     this.gifts.toggleDone(item);
-    this.ngOnInit();
+    setTimeout(() => { this.ngOnInit() }, 200);
   }
 
   newItem() {
@@ -41,10 +41,12 @@ export class GiftsComponent implements OnInit {
     this.gifts.newGiftItem(this.newGiftItem);
     this.newGiftItem.description = '';
     this.newGiftItem.userid = null;
+    setTimeout(() => { this.ngOnInit() }, 200);
   }
 
   removeGift(item: gift) {
     this.gifts.removeGiftItem(item);
+    setTimeout(() => { this.ngOnInit() }, 200);
   }
 
 

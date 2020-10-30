@@ -38,7 +38,7 @@ export class partyService {
 
   removePartyItem(removeParty: party){
     var newURL = this.partyUrl + `/remove/${removeParty.description}`
-    return this.http.delete<party>(newURL);
+    return this.http.delete<party>(newURL).subscribe((data) => console.log(data));
   }
 
 }
