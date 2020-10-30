@@ -16,27 +16,27 @@ export class partyService {
 
 
 
-  getAllParty(): Observable<party[]> {
+  getAllParty(){
     return this.http.get<party[]>(`${this.partyUrl}`);
   }
 
-  toggleDone(item: party): Observable<party> {
+  toggleDone(item: party){
     const headers = { 'content-type': 'application/json' };
     const body = JSON.stringify(item);
     var newURL = this.partyUrl + '/check'
-    return this.http.post<party>(newURL, body, { 'headers': headers });
+    return this.http.post<party>(newURL, body, { 'headers': headers }).subscribe((data) => console.log(data));
   
   }
 
-  newPartyItem(newParty: party): Observable<party> {
+  newPartyItem(newParty: party){
     const headers = { 'content-type': 'application/json' };
     const body = JSON.stringify(newParty);
     var newURL = this.partyUrl + '/add'
     console.log(body)
-    return this.http.post<party>(newURL, body, { 'headers': headers });
+    return this.http.post<party>(newURL, body, { 'headers': headers }).subscribe((data) => console.log(data));
   }
 
-  removePartyItem(removeParty: party): Observable<party> {
+  removePartyItem(removeParty: party){
     var newURL = this.partyUrl + `/remove/${removeParty.description}`
     return this.http.delete<party>(newURL);
   }
