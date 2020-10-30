@@ -65,10 +65,7 @@ namespace Dev.Build_Final.Services
 
         public void RemovePeople(people myPeople)
         {
-            var procedure = "[removepeople]";
-            var values = new { firstname = myPeople.firstname, lastname = myPeople.lastname };
-            conn.Query(procedure, values, commandType: CommandType.StoredProcedure);
-
+            conn.Delete<people>(myPeople);
         }
 
         #endregion
