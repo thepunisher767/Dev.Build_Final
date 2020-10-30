@@ -1,0 +1,10 @@
+<div style="border: 1px solid red">people Component</div>
+
+<div *ngFor="let p of peopleList">
+  <nav>
+    <a [routerLink]="['/book', {outlets: {'people': ['people'], 'gifts': [p.id]}}]">{{p.firstname}} {{p.lastname}}</a>
+    <!--<a routerLink="/gifts/{{p.id}}">{{p.firstname}}</a>-->
+  </nav>
+</div>
+
+
