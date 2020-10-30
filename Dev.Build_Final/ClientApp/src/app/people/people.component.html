@@ -3,8 +3,14 @@
 <div *ngFor="let p of peopleList">
   <nav>
     <a [routerLink]="['/book', {outlets: {'people': ['people'], 'gifts': [p.id]}}]">{{p.firstname}} {{p.lastname}}</a>
+    <button (click)="removePerson(p)">Remove</button>
     <!--<a routerLink="/gifts/{{p.id}}">{{p.firstname}}</a>-->
   </nav>
 </div>
 
-
+<br />
+<form>
+  <textarea name="newperson" placeholder="First Name" rows="1" cols="50" [(ngModel)]="newPerson.firstname"></textarea> <br />
+  <textarea name="newperson" placeholder="Last Name" rows="1" cols="50" [(ngModel)]="newPerson.lastname"></textarea> <br />
+  <button (click)="addPerson()">Add Person</button>
+</form>

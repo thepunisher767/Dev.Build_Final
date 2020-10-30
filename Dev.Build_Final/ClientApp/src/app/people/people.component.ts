@@ -3,12 +3,12 @@ import { peopleService } from '../Services/people';
 import { people } from '../interfaces/Ipeople';
 
 @Component({
-    selector: 'app-people',
-    templateUrl: './people.component.html',
-    styleUrls: ['./people.component.css']
+  selector: 'app-people',
+  templateUrl: './people.component.html',
+  styleUrls: ['./people.component.css']
 })
 /** people component*/
-export class PeopleComponent implements OnInit{
+export class PeopleComponent implements OnInit {
   /** people ctor */
   constructor(private people: peopleService) { }
 
@@ -18,9 +18,8 @@ export class PeopleComponent implements OnInit{
   person: people
 
   newPerson: people = {
-    id: null,
-    firstname:  '',
-    lastname:  ''
+    firstname: '',
+    lastname: ''
   }
 
   ngOnInit(): void {

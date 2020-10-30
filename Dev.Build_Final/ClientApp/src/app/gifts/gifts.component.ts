@@ -15,6 +15,7 @@ export class GiftsComponent implements OnInit {
 
   giftList: gift
   item: gift
+  id: number
 
   newGiftItem: gift = {
     description: '',
@@ -23,8 +24,8 @@ export class GiftsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.gifts.getGiftsFromUser(id).subscribe(
+    this.id = +this.route.snapshot.paramMap.get('id');
+    this.gifts.getGiftsFromUser(this.id).subscribe(
       (data: gift) =>
         this.giftList = data
     );
@@ -36,8 +37,10 @@ export class GiftsComponent implements OnInit {
   }
 
   newItem() {
+    this.newGiftItem.userid = this.id;
     this.gifts.newGiftItem(this.newGiftItem);
     this.newGiftItem.description = '';
+    this.newGiftItem.userid = null;
   }
 
   removeGift(item: gift) {
