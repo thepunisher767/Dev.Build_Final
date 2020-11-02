@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'app-book',
@@ -9,7 +9,5 @@ import { Router } from '@angular/router';
 /** book component*/
 export class BookComponent {
   /** book ctor */
-  constructor(private route: Router) {
-
-    }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 }

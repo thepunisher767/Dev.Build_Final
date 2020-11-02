@@ -16,7 +16,7 @@ export class giftService {
 
 
   getGiftsFromUser(id: number) {
-    return this.http.get(this.giftUrl + `/${id}`);
+    return this.http.get<gift[]>(this.giftUrl + `/${id}`);
   }
 
   toggleDone(item: gift) {

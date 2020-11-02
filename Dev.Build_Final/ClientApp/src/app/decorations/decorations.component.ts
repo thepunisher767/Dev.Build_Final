@@ -30,19 +30,19 @@ export class DecorationsComponent implements OnInit{
 
   checkbox(item: decoration) {
     this.decoration.toggleDone(item);
-    setTimeout(() => { this.ngOnInit() }, 200);
+    setTimeout(() => { this.ngOnInit() }, 100);
   }
 
   newItem() {
     this.decoration.newDecorationItem(this.newDecorationItem);
     this.newDecorationItem.description = '';
-    setTimeout(() => { this.ngOnInit() }, 200);
+    setTimeout(() => { this.ngOnInit() }, 100);
 
   }
 
   removeDecoration(item: decoration) {
     this.decoration.removeDecorationItem(item);
-    setTimeout(() => { this.ngOnInit() }, 200);
+    setTimeout(() => { this.ngOnInit() }, 100);
   }
 
 

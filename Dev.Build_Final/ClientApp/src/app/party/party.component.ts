@@ -33,18 +33,18 @@ export class PartyComponent implements OnInit{
 
   checkbox(item:party) {
     this.party.toggleDone(item);
-    setTimeout(() => { this.ngOnInit() }, 200);
+    setTimeout(() => { this.ngOnInit() }, 100);
   }
 
   newItem() {
     this.party.newPartyItem(this.newPartyItem);
     this.newPartyItem.description = ''
-    setTimeout(() => { this.ngOnInit() }, 200);
+    setTimeout(() => { this.ngOnInit() }, 100);
   }
 
   removeEvent(item:party) {
     this.party.removePartyItem(item);
-    setTimeout(() => { this.ngOnInit() }, 200);
+    setTimeout(() => { this.ngOnInit() }, 100);
   }
 
 }

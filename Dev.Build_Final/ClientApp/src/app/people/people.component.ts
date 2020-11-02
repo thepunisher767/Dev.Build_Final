@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { peopleService } from '../Services/people';
 import { people } from '../interfaces/Ipeople';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-people',
@@ -10,7 +11,7 @@ import { people } from '../interfaces/Ipeople';
 /** people component*/
 export class PeopleComponent implements OnInit {
   /** people ctor */
-  constructor(private people: peopleService) { }
+  constructor(private people: peopleService, private router: Router, private route: ActivatedRoute) { }
 
   @Input() userID: number
 
@@ -29,16 +30,20 @@ export class PeopleComponent implements OnInit {
     );
   }
 
+  showList(id) {
+    this.router.navigate(['/book', { outlets: { 'gifts': [id] } }]);
+  }
+
   addPerson() {
     this.people.AddPerson(this.newPerson);
     this.newPerson.firstname = '';
     this.newPerson.lastname = '';
-    setTimeout(() => { this.ngOnInit() }, 200);
+    setTimeout(() => { this.ngOnInit() }, 100);
   }
 
   removePerson(person: people) {
     this.people.removePerson(person);
-    setTimeout(() => { this.ngOnInit() }, 200);
+    setTimeout(() => { this.ngOnInit() }, 100);
   }
 
 

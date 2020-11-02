@@ -1,6 +1,6 @@
 <div style="border: 1px solid red">people Component</div>
 
-<div *ngFor="let p of peopleList">
+<div *ngFor="let p of peopleList" (click)="showList(p.id)">
   <nav>
     <a [routerLink]="['/book', {outlets: {'people': ['people'], 'gifts': [p.id]}}]">{{p.firstname}} {{p.lastname}}</a>
     <button (click)="removePerson(p)">Remove</button>
