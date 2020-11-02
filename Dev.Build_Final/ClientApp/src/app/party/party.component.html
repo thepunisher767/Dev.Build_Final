@@ -24,7 +24,7 @@
 
 <br />
 <form>
-  <textarea name="newTask" placeholder="New Holiday Task" rows="1" cols="50" [(ngModel)]="newPartyItem.description"></textarea> <br />
-
+  <!--<textarea name="newTask" placeholder="New Holiday Task" rows="1" cols="50" [(ngModel)]="newPartyItem.description"></textarea> <br />-->
+  <input type="text" name="newParty" placeholder="New Party item" [(ngModel)]="newPartyItem.description" /><ng-container *ngIf="error">Invalid Format. Try Again.</ng-container><br />
   <button (click)="newItem()">Add Task</button>
 </form>

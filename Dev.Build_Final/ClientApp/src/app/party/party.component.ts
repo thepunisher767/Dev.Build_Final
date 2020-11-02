@@ -14,10 +14,9 @@ export class PartyComponent implements OnInit{
     /** party ctor */
   constructor(private party: partyService) { }
 
-  
-
   partyList: party[]
   item: party
+  error: boolean
 
   newPartyItem: party = {
     description: '',
@@ -37,10 +36,18 @@ export class PartyComponent implements OnInit{
   }
 
   newItem() {
-    this.party.newPartyItem(this.newPartyItem);
-    this.newPartyItem.description = ''
+    if (/.*\S.*/.test(this.newPartyItem.description)) {
+      this.party.newPartyItem(this.newPartyItem);
+      this.newPartyItem.description = '';
+      //this.newDecorationItem.userid = null;
+      this.error = false;
+    }
+    else {
+      this.error = true;
+    }
     setTimeout(() => { this.ngOnInit() }, 100);
   }
+
 
   removeEvent(item:party) {
     this.party.removePartyItem(item);

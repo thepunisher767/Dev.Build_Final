@@ -15,6 +15,7 @@ export class DecorationsComponent implements OnInit{
 
   decorationList: decoration
   item: decoration
+  error: boolean
 
   newDecorationItem: decoration = {
     description: '',
@@ -34,10 +35,16 @@ export class DecorationsComponent implements OnInit{
   }
 
   newItem() {
-    this.decoration.newDecorationItem(this.newDecorationItem);
-    this.newDecorationItem.description = '';
+    if (/.*\S.*/.test(this.newDecorationItem.description)) {
+      this.decoration.newDecorationItem(this.newDecorationItem);
+      this.newDecorationItem.description = '';
+      //this.newDecorationItem.userid = null;
+      this.error = false;
+    }
+    else {
+      this.error = true;
+    }
     setTimeout(() => { this.ngOnInit() }, 100);
-
   }
 
   removeDecoration(item: decoration) {

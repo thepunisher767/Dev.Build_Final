@@ -19,7 +19,7 @@
 <br />
 
 <form>
-  <textarea name="newDecoration" placeholder="New Decoration" rows="1" cols="50" [(ngModel)]="newDecorationItem.description"></textarea> <br />
-
+  <!--<textarea name="newDecoration" placeholder="New Decoration" rows="1" cols="50" [(ngModel)]="newDecorationItem.description"></textarea> <br />-->
+  <input type="text" name="newDecor" placeholder="New Decoration" [(ngModel)]="newDecorationItem.description" /><ng-container *ngIf="error">Invalid Format. Try Again.</ng-container><br />
   <button (click)="newItem()">Add Decoration</button>
 </form>
