@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { gift } from "../interfaces/Igifts";
+import { people } from "../interfaces/Ipeople";
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,10 @@ export class giftService {
 
   getGiftsFromUser(id: number) {
     return this.http.get<gift[]>(this.giftUrl + `/${id}`);
+  }
+
+  getUserName(id: number) {
+    return this.http.get<people>(this.giftUrl + `/name/${id}`)
   }
 
   toggleDone(item: gift) {

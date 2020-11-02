@@ -68,9 +68,16 @@ namespace Dev.Build_Final.Services
             conn.Delete<people>(myPeople);
         }
 
+        public people GetUsername(int id)
+        {
+            string query = $"SELECT DISTINCT people.id, people.firstname, people.lastname FROM people JOIN gift ON people.id=gift.userid WHERE people.id={id}";
+            return conn.QuerySingle<people>(query);
+        }
+
         #endregion
 
         #region Gifts
+
 
         public IEnumerable<gift> GetPersonGifts(int userID)
         {

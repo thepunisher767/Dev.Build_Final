@@ -26,12 +26,14 @@ namespace Dev.Build_Final.Services
         IEnumerable<people> GetPeopleList();
         void AddPeople(people myPeople);
         void RemovePeople(people myPeople);
-       
-        
-       
+        people GetUsername(int id);
+
+
+
         void RemoveGift(gift myGift);
         void AddGift(gift myGift);
         void CompleteGift(gift myGift);
+        
 
         IEnumerable<gift> GetPersonGifts(int userID);
 

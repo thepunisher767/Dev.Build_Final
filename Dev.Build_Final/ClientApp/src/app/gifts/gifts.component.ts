@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { giftService } from '../Services/gifts';
 import { gift } from '../interfaces/Igifts';
+import { people } from '../interfaces/Ipeople';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -17,6 +18,7 @@ export class GiftsComponent implements OnInit {
   item: gift
   id: number
   error: boolean
+  currentSelectedUser: people
 
   newGiftItem: gift = {
     description: '',
@@ -28,9 +30,12 @@ export class GiftsComponent implements OnInit {
     console.log(this.giftList);
     this.route.params.subscribe((params: { id: number }) => {
       this.id = params.id;
+      this.gifts.getUserName(this.id).subscribe(
+        (data: people) =>
+          this.currentSelectedUser = data);
       this.gifts.getGiftsFromUser(params.id).subscribe(
-      (data: gift[]) =>
-        this.giftList = data);
+        (data: gift[]) =>
+          this.giftList = data);
     });
     console.log(this.giftList);
   }

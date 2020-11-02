@@ -49,5 +49,11 @@ namespace Dev.Build_Final.Controllers
             DAL.RemoveGift(destoryGift);
         }
 
+        [HttpGet("name/{userID}")]
+        public people GetUserName(int userID)
+        {
+            return DAL.GetUsername(userID);
+        }
+
     }
 }

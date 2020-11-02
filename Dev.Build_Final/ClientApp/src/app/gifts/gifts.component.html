@@ -1,8 +1,11 @@
 <div style="border: 1px solid red">gifts Component</div>
+<h3 *ngIf="id != '0'">{{currentSelectedUser.firstname}}'s Gift List</h3>
 
 <ng-container *ngFor="let item of giftList, index as i">
 
   <div *ngIf="item.done =='1'; then Checked else unChecked"></div>
+
+  
 
   <ng-template #Checked>
     <input type="checkbox" id="item{{i}}" (click)="checkbox(item)" Checked /><label for="item{{i}}"><del>{{item.description}}</del></label>
