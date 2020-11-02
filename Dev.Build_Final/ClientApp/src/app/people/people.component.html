@@ -10,7 +10,9 @@
 
 <br />
 <form>
-  <textarea name="newperson" placeholder="First Name" rows="1" cols="50" [(ngModel)]="newPerson.firstname"></textarea> <br />
-  <textarea name="newperson" placeholder="Last Name" rows="1" cols="50" [(ngModel)]="newPerson.lastname"></textarea> <br />
+  <input type="text" name="newPerson" placeholder="First Name" [(ngModel)]="newPerson.firstname" /><ng-container *ngIf="firstNameError">Invalid Format. Try Again.</ng-container><br />
+  <input type="text" name="newPerson" placeholder="Last Name" [(ngModel)]="newPerson.lastname" /><ng-container *ngIf="lastNameError">Invalid Format. Try Again.</ng-container><br />
+  <!--<textarea name="newperson" placeholder="First Name" rows="1" cols="50" [(ngModel)]="newPerson.firstname"></textarea> <br />
+  <textarea name="newperson" placeholder="Last Name" rows="1" cols="50" [(ngModel)]="newPerson.lastname"></textarea> <br />-->
   <button (click)="addPerson()">Add Person</button>
 </form>

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { giftService } from '../Services/gifts';
 import { gift } from '../interfaces/Igifts';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-gifts',
@@ -11,11 +11,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 /** gifts component*/
 export class GiftsComponent implements OnInit {
   /** gifts ctor */
-  constructor(private gifts: giftService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private gifts: giftService, private route: ActivatedRoute) { }
 
   giftList: gift[]
   item: gift
   id: number
+  error: boolean
 
   newGiftItem: gift = {
     description: '',
@@ -24,17 +25,14 @@ export class GiftsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.giftList);
     this.route.params.subscribe((params: { id: number }) => {
+      this.id = params.id;
       this.gifts.getGiftsFromUser(params.id).subscribe(
       (data: gift[]) =>
-        this.giftList = data
-    );
-      //this.giftList = this.gifts.getGiftsFromUser(params.id);
+        this.giftList = data);
     });
-    //this.gifts.getGiftsFromUser(this.id).subscribe(
-    //  (data: gift) =>
-    //    this.giftList = data
-    //);
+    console.log(this.giftList);
   }
 
   checkbox(item: gift) {
@@ -43,11 +41,17 @@ export class GiftsComponent implements OnInit {
   }
 
   newItem() {
-    this.newGiftItem.userid = this.id;
-    this.gifts.newGiftItem(this.newGiftItem);
-    this.newGiftItem.description = '';
-    this.newGiftItem.userid = null;
-    setTimeout(() => { this.ngOnInit() }, 100);
+    if (/.*\S.*/.test(this.newGiftItem.description)) {
+      this.newGiftItem.userid = +this.id;
+      this.gifts.newGiftItem(this.newGiftItem);
+      this.newGiftItem.description = '';
+      this.newGiftItem.userid = null;
+      this.error = false;
+    }
+    else {
+      this.error = true;
+    }
+    setTimeout(() => { this.ngOnInit() }, 100);  
   }
 
   removeGift(item: gift) {

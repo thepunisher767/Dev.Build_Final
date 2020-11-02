@@ -28,10 +28,11 @@ export class giftService {
   }
 
   newGiftItem(newGift: gift) {
+    console.log('newGift = ' + newGift.userid);
     const headers = { 'content-type': 'application/json' };
     const body = JSON.stringify(newGift);
     var newURL = this.giftUrl + '/add'
-    console.log(body)
+    console.log('json = ' + body)
     return this.http.post<gift>(newURL, body, { 'headers': headers }).subscribe((data) => console.log(data));
   }
 
