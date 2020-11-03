@@ -1,11 +1,11 @@
 <div style="border: 1px solid red">gifts Component</div>
-<h3 *ngIf="id != '0'">{{currentSelectedUser.firstname}}'s Gift List</h3>
+<h3 *ngIf="id != '0'">{{currentSelectedUser?.firstname}}'s Gift List</h3>
 
 <ng-container *ngFor="let item of giftList, index as i">
 
   <div *ngIf="item.done =='1'; then Checked else unChecked"></div>
 
-  
+
 
   <ng-template #Checked>
     <input type="checkbox" id="item{{i}}" (click)="checkbox(item)" Checked /><label for="item{{i}}"><del>{{item.description}}</del></label>
@@ -24,7 +24,7 @@
 <br />
 
 <form *ngIf="id != '0'">
-  <input type="text" name="newGift" placeholder="New Gift" [(ngModel)]="newGiftItem.description"/><ng-container *ngIf="error">Invalid Format. Try Again.</ng-container>
+  <input type="text" name="newGift" placeholder="New Gift" [(ngModel)]="newGiftItem.description" /><ng-container *ngIf="error">Invalid Format. Try Again.</ng-container>
   <br />
   <!--<textarea name="newGift" placeholder="New Gift" rows="1" cols="50" [(ngModel)]="newGiftItem.description" required ></textarea> <br />-->
 

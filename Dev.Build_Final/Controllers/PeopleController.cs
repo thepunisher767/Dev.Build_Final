@@ -28,9 +28,10 @@ namespace Dev.Build_Final.Controllers
         }
 
         [HttpPost("add")]
-        public void AddPerson(people newPerson)
+        public people AddPerson(people newPerson)
         {
-            DAL.AddPeople(newPerson);
+            return DAL.AddPeople(newPerson);
+
         }
 
         [HttpDelete("remove/{id}")]

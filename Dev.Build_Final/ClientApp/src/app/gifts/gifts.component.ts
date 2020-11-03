@@ -5,9 +5,9 @@ import { people } from '../interfaces/Ipeople';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-    selector: 'app-gifts',
-    templateUrl: './gifts.component.html',
-    styleUrls: ['./gifts.component.css']
+  selector: 'app-gifts',
+  templateUrl: './gifts.component.html',
+  styleUrls: ['./gifts.component.css']
 })
 /** gifts component*/
 export class GiftsComponent implements OnInit {
@@ -27,17 +27,20 @@ export class GiftsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.giftList);
+    //console.log(this.giftList);
     this.route.params.subscribe((params: { id: number }) => {
       this.id = params.id;
-      this.gifts.getUserName(this.id).subscribe(
-        (data: people) =>
-          this.currentSelectedUser = data);
+      //console.log('currentID = ' + this.id);
+      if (this.id != 0) {
+        this.gifts.getUserName(this.id).subscribe(
+          (data: people) =>
+            this.currentSelectedUser = data);
+      }
       this.gifts.getGiftsFromUser(params.id).subscribe(
         (data: gift[]) =>
           this.giftList = data);
     });
-    console.log(this.giftList);
+    //console.log(this.giftList);
   }
 
   checkbox(item: gift) {
@@ -56,7 +59,7 @@ export class GiftsComponent implements OnInit {
     else {
       this.error = true;
     }
-    setTimeout(() => { this.ngOnInit() }, 100);  
+    setTimeout(() => { this.ngOnInit() }, 100);
   }
 
   removeGift(item: gift) {

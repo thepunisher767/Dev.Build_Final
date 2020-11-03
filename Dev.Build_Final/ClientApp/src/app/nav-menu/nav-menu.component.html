@@ -4,16 +4,7 @@
   >
     <div class="container">
       <a class="navbar-brand" [routerLink]="['/']">.:Santa's Little Helper:.</a>
-      <a>Countdown to Christmas: {{countDown}}</a>
-      <button class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target=".navbar-collapse"
-              aria-label="Toggle navigation"
-              [attr.aria-expanded]="isExpanded"
-              (click)="toggle()">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <app-countdown></app-countdown>
       <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
            [ngClass]="{ show: isExpanded }">
         <ul class="navbar-nav flex-grow">

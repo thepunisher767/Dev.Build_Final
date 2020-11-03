@@ -44,7 +44,7 @@ namespace Dev.Build_Final.Controllers
         [HttpDelete("remove/{description}")]
         public void RemoveGift(string description)
         {
-            gift destoryGift = new gift() { description = description};
+            gift destoryGift = new gift() { description = description };
 
             DAL.RemoveGift(destoryGift);
         }

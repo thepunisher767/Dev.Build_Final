@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Dev.Build_Final.Services
 {
-    public class DAL :IDAL
+    public class DAL : IDAL
     {
         private string connString;
         private SqlConnection conn;
@@ -58,9 +58,10 @@ namespace Dev.Build_Final.Services
             return conn.Query<people>(query);
         }
 
-        public void AddPeople(people myPeople)
+        public people AddPeople(people myPeople)
         {
-            conn.Insert<people>(myPeople);
+            long id = conn.Insert<people>(myPeople);
+            return conn.Get<people>(id);
         }
 
         public void RemovePeople(people myPeople)
@@ -70,7 +71,7 @@ namespace Dev.Build_Final.Services
 
         public people GetUsername(int id)
         {
-            string query = $"SELECT DISTINCT people.id, people.firstname, people.lastname FROM people JOIN gift ON people.id=gift.userid WHERE people.id={id}";
+            string query = $"SELECT DISTINCT * FROM people WHERE people.id={id}";
             return conn.QuerySingle<people>(query);
         }
 
@@ -83,7 +84,7 @@ namespace Dev.Build_Final.Services
         {
             string query = $"SELECT * FROM gift WHERE userid = '{userID}'";
             return conn.Query<gift>(query);
-            
+
             /*
             string query = "SELECT gift.description, gift.done ";
             query += "FROM gift ";
@@ -109,7 +110,7 @@ namespace Dev.Build_Final.Services
         public void RemoveGift(gift myGift)
         {
             var procedure = "[removegift]";
-            var values = new { description = myGift.description};
+            var values = new { description = myGift.description };
             conn.Query(procedure, values, commandType: CommandType.StoredProcedure);
 
         }

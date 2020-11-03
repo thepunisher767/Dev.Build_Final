@@ -9,7 +9,7 @@ namespace Dev.Build_Final.Services
 {
     public interface IDAL
     {
-        
+
         ///party/////////////////////////////////////
         IEnumerable<party> GetPartyList();
 
@@ -24,7 +24,7 @@ namespace Dev.Build_Final.Services
         ///Gifts/////////////////////////////////////
 
         IEnumerable<people> GetPeopleList();
-        void AddPeople(people myPeople);
+        people AddPeople(people myPeople);
         void RemovePeople(people myPeople);
         people GetUsername(int id);
 
@@ -33,7 +33,7 @@ namespace Dev.Build_Final.Services
         void RemoveGift(gift myGift);
         void AddGift(gift myGift);
         void CompleteGift(gift myGift);
-        
+
 
         IEnumerable<gift> GetPersonGifts(int userID);
 

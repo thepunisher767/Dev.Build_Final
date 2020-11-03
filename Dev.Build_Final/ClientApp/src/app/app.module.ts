@@ -17,6 +17,7 @@ import { PeopleComponent } from './people/people.component';
 import { DecorationsComponent } from './decorations/decorations.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BookComponent } from './book/book.component';
+import { CountdownComponent } from './countdown/countdown.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { BookComponent } from './book/book.component';
     GiftsComponent,
     PeopleComponent,
     DecorationsComponent,
-    BookComponent
+    BookComponent,
+    CountdownComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -44,7 +46,8 @@ import { BookComponent } from './book/book.component';
         { path: 'people', component: PeopleComponent, outlet: 'people' }
       ] },
       { path: 'decorations', component: DecorationsComponent },
-      { path: 'party', component: PartyComponent }
+      { path: 'party', component: PartyComponent },
+      { path: 'countdown', component: CountdownComponent }
     ]),
     BrowserAnimationsModule,
     MatGridListModule
