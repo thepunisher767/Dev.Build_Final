@@ -1,4 +1,6 @@
-﻿import { Component } from '@angular/core';
+import { Component } from '@angular/core';
+import { userlogin } from '../interfaces/Iuserlogin';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
     selector: 'app-completed',
@@ -8,7 +10,11 @@
 /** completed component*/
 export class CompletedComponent {
     /** completed ctor */
-    constructor() {
+  constructor(private cookie: CookieService) { }
 
-    }
+  currentID: number
+
+  ngOnInit(): void {
+    this.currentID = Number(this.cookie.get('id'));
+  }
 }

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { userlogin } from '../interfaces/Iuserlogin';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-nav-menu',
@@ -8,6 +10,13 @@ import { Component } from '@angular/core';
 export class NavMenuComponent {
   isExpanded = false;
 
+  currentID: number
+
+  constructor(private cookie: CookieService) { }
+
+  ngOnInit(): void {
+    this.currentID = Number(this.cookie.get('id'));
+  }
 
   xmasDay = new Date("december 25, 2020 00:00:00").getTime();
 

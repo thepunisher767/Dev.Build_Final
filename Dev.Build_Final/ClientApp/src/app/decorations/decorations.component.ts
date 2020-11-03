@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { decorationService } from '../Services/decorations';
 import { decoration } from '../interfaces/Idecoration';
+import { userlogin } from '../interfaces/Iuserlogin';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Component({
@@ -11,15 +13,17 @@ import { decoration } from '../interfaces/Idecoration';
 /** decorations component*/
 export class DecorationsComponent implements OnInit{
   /** decorations ctor */
-  constructor(private decoration: decorationService) { }
+  constructor(private cookie: CookieService, private decoration: decorationService) { }
 
   decorationList: decoration
   item: decoration
   error: boolean
+  currentID: number
 
   newDecorationItem: decoration = {
     description: '',
-    done: false
+    done: false,
+    loginid: null
   }
 
   ngOnInit(): void {
@@ -27,6 +31,8 @@ export class DecorationsComponent implements OnInit{
       (data: decoration) =>
         this.decorationList = data
     );
+    this.currentID = Number(this.cookie.get('id'));
+    this.newDecorationItem.loginid = this.currentID;
   }
 
   checkbox(item: decoration) {

@@ -21,6 +21,18 @@ namespace Dev.Build_Final.Services
             connString = config.GetConnectionString("default");
             conn = new SqlConnection(connString);
         }
+
+        public userlogin NewLogin(userlogin newUser)
+        {
+            long id = conn.Insert<userlogin>(newUser);
+            return conn.Get<userlogin>(id);
+        }
+
+        public IEnumerable<userlogin> GetAllUsers()
+        {
+            return conn.GetAll<userlogin>();
+        }
+
         #region PartyCode
         public IEnumerable<party> GetPartyList()
         {

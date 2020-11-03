@@ -1,25 +1,24 @@
-<div style="border: 1px solid red">decorations Component</div>
+<div style="border: 1px solid red">decorations Component - {{currentID}}</div>
 
 <ng-container *ngFor="let item of decorationList, index as i">
-  <div *ngIf="item.done =='1'; then Checked else unChecked">
+  <ng-container *ngIf="item.loginid === currentID">
+    <div *ngIf="item.done =='1'; then Checked else unChecked"></div>
 
-  </div>
-  <ng-template #Checked>
-    <input type="checkbox" id="item{{i}}" (click)="checkbox(item)" Checked /><label for="item{{i}}"><del>{{item.description}}</del></label>
-    <button (click)="removeDecoration(item)">X</button><br />
-  </ng-template>
+    <ng-template #Checked>
+      <input type="checkbox" id="item{{i}}" (click)="checkbox(item)" Checked /><label for="item{{i}}"><del>{{currentID}} - {{item.description}} - {{item.loginid}}</del></label>
+      <button (click)="removeDecoration(item)">X</button><br />
+    </ng-template>
 
-  <ng-template #unChecked>
-    <input type="checkbox" id="item{{i}}" (click)="checkbox(item)" /><label for="item{{i}}">{{item.description}}</label>
-    <button (click)="removeDecoration(item)">X</button><br />
-  </ng-template>
-
+    <ng-template #unChecked>
+      <input type="checkbox" id="item{{i}}" (click)="checkbox(item)" /><label for="item{{i}}">{{currentID}} {{item.description}} - {{item.loginid}}</label>
+      <button (click)="removeDecoration(item)">X</button><br />
+    </ng-template>
+  </ng-container>
 </ng-container>
 
 <br />
 
 <form>
-  <!--<textarea name="newDecoration" placeholder="New Decoration" rows="1" cols="50" [(ngModel)]="newDecorationItem.description"></textarea> <br />-->
   <input type="text" name="newDecor" placeholder="New Decoration" [(ngModel)]="newDecorationItem.description" /><ng-container *ngIf="error">Invalid Format. Try Again.</ng-container><br />
   <button (click)="newItem()">Add Decoration</button>
 </form>

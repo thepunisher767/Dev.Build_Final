@@ -1,0 +1,14 @@
+<button (click)="setUser('new')">New User</button>&nbsp;<button (click)="setUser('existing')">Existing User</button>
+<br />
+
+<form *ngIf="usertype == 'new'">
+  <input type="text" name="login" placeholder="New User" [(ngModel)]="username" /><ng-container *ngIf="error == 'invalidFormat'">Invalid Format. Try Again.</ng-container><ng-container *ngIf="error == 'userTaken'">Username taken</ng-container>
+  <br />
+  <button (click)="addNewUser()">Add User</button><ng-container *ngIf="success">Creating user and logging in...</ng-container>
+</form>
+
+<form *ngIf="usertype == 'existing'">
+  <input type="text" name="login" placeholder="Username" [(ngModel)]="username" /><ng-container *ngIf="error == 'notFound'">Unable to find username. Need to create a new one?</ng-container>
+  <br />
+  <button (click)="loginUser()">Login</button><ng-container *ngIf="success">Logging in...</ng-container>
+</form>

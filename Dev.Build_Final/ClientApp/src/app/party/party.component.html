@@ -2,24 +2,19 @@
 
 
 <ng-container *ngFor="let item of partyList, index as i">
-  <div *ngIf="item.done =='1'; then Checked else unChecked">
+  <ng-container *ngIf="item.loginid === currentID">
+    <div *ngIf="item.done =='1'; then Checked else unChecked">
 
-  </div>
-  <ng-template #Checked>
-    <input type="checkbox" id="item{{i}}" (click)="checkbox(item)" Checked /><label for="item{{i}}"><del>{{item.description}}</del></label>
-    <button (click)="removeEvent(item)">X</button><br />
-  </ng-template>
-  <ng-template #unChecked>
-    <input type="checkbox" id="item{{i}}" (click)="checkbox(item)" /><label for="item{{i}}">{{item.description}}</label>
-    <button (click)="removeEvent(item)">X</button><br />
-  </ng-template>
-
-  
-  <!--<div class="content">
-    <p>{{item.answer}}</p>
-    <br />
-    <button (click)="delFavs(item.id)">Remove from List</button>
-  </div>-->
+    </div>
+    <ng-template #Checked>
+      <input type="checkbox" id="item{{i}}" (click)="checkbox(item)" Checked /><label for="item{{i}}"><del>{{item.description}}</del></label>
+      <button (click)="removeEvent(item)">X</button><br />
+    </ng-template>
+    <ng-template #unChecked>
+      <input type="checkbox" id="item{{i}}" (click)="checkbox(item)" /><label for="item{{i}}">{{item.description}}</label>
+      <button (click)="removeEvent(item)">X</button><br />
+    </ng-template>
+  </ng-container>
 </ng-container>
 
 <br />

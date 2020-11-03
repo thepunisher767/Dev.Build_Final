@@ -6,16 +6,11 @@ using Dapper.Contrib.Extensions;
 
 namespace Dev.Build_Final.Models
 {
-    [Table("people")]
-    public class people
-    {   
+    [Table("userlogin")]
+    public class userlogin
+    {
         [Key]
         public long id { get; set; }
-
-        public string firstname { get; set; }
-        public string lastname { get; set; }
-        public long loginid { get; set; }
+        public string login { get; set; }
     }
 }
-
-

@@ -12,5 +12,7 @@ namespace Dev.Build_Final.Models
         
         public string description { get; set; }
         public bool done { get; set; }
+        public long loginid { get; set; }
+
     }
 }

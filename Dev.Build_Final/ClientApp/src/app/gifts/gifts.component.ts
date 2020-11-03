@@ -3,6 +3,8 @@ import { giftService } from '../Services/gifts';
 import { gift } from '../interfaces/Igifts';
 import { people } from '../interfaces/Ipeople';
 import { ActivatedRoute } from '@angular/router';
+import { userlogin } from '../interfaces/Iuserlogin';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-gifts',
@@ -12,18 +14,20 @@ import { ActivatedRoute } from '@angular/router';
 /** gifts component*/
 export class GiftsComponent implements OnInit {
   /** gifts ctor */
-  constructor(private gifts: giftService, private route: ActivatedRoute) { }
+  constructor(private cookie: CookieService, private gifts: giftService, private route: ActivatedRoute) { }
 
   giftList: gift[]
   item: gift
   id: number
   error: boolean
   currentSelectedUser: people
+  currentID: number
 
   newGiftItem: gift = {
     description: '',
     done: false,
-    userid: null
+    userid: null,
+    loginid: null
   }
 
   ngOnInit(): void {
@@ -40,6 +44,8 @@ export class GiftsComponent implements OnInit {
         (data: gift[]) =>
           this.giftList = data);
     });
+    this.currentID = Number(this.cookie.get('id'));
+    this.newGiftItem.loginid = this.currentID;
     //console.log(this.giftList);
   }
 

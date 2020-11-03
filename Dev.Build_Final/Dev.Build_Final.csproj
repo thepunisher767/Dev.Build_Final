@@ -30,15 +30,18 @@
     <None Remove="ClientApp\src\app\interfaces\Igifts.ts" />
     <None Remove="ClientApp\src\app\interfaces\Iparty.ts" />
     <None Remove="ClientApp\src\app\interfaces\Ipeople.ts" />
+    <None Remove="ClientApp\src\app\interfaces\Iuserlogin.ts" />
     <None Remove="ClientApp\src\app\Services\complete.ts" />
     <None Remove="ClientApp\src\app\Services\countdown.ts" />
     <None Remove="ClientApp\src\app\Services\decorations.ts" />
     <None Remove="ClientApp\src\app\Services\gifts.ts" />
+    <None Remove="ClientApp\src\app\Services\login.ts" />
     <None Remove="ClientApp\src\app\Services\party.ts" />
     <None Remove="ClientApp\src\app\Services\people.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\interfaces\Iuserlogin.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\interfaces\Idecoration.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\interfaces\Igifts.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\interfaces\Iparty.ts" />
@@ -47,6 +50,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\Services\countdown.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Services\decorations.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Services\gifts.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Services\login.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Services\party.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Services\people.ts" />
   </ItemGroup>

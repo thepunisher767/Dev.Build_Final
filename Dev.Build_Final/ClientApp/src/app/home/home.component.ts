@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { userlogin } from '../interfaces/Iuserlogin';
 
 
 @Component({
@@ -7,8 +9,11 @@ import { Component, Input } from '@angular/core';
 })
 export class HomeComponent {
 
-  constructor() { }
+  constructor(private cookie: CookieService) { }
 
-  userID: number
+  
 
+  ngOnInit(): void {
+
+  }
 }

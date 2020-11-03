@@ -1,6 +1,8 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { partyService } from '../Services/party';
 import { party } from '../interfaces/Iparty';
+import { userlogin } from '../interfaces/Iuserlogin';
+import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -12,22 +14,26 @@ import { party } from '../interfaces/Iparty';
 /** party component*/
 export class PartyComponent implements OnInit{
     /** party ctor */
-  constructor(private party: partyService) { }
+  constructor(private cookie: CookieService, private party: partyService) { }
 
   partyList: party[]
   item: party
   error: boolean
+  currentID: number
 
   newPartyItem: party = {
     description: '',
-    done: false
+    done: false,
+    loginid: null
   }
 
   ngOnInit(): void {
     this.party.getAllParty().subscribe(
       (data: party[]) =>
         this.partyList = data
-    ); 
+    );
+    this.currentID = Number(this.cookie.get('id'));
+    this.newPartyItem.loginid = this.currentID;
   }
 
   checkbox(item:party) {

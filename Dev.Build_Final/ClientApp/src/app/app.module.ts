@@ -18,6 +18,8 @@ import { DecorationsComponent } from './decorations/decorations.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BookComponent } from './book/book.component';
 import { CountdownComponent } from './countdown/countdown.component';
+import { CookieService } from 'ngx-cookie-service';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { CountdownComponent } from './countdown/countdown.component';
     PeopleComponent,
     DecorationsComponent,
     BookComponent,
-    CountdownComponent
+    CountdownComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -52,7 +55,7 @@ import { CountdownComponent } from './countdown/countdown.component';
     BrowserAnimationsModule,
     MatGridListModule
   ],
-  providers: [],
+  providers: [ CookieService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

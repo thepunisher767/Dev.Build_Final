@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { peopleService } from '../Services/people';
 import { people } from '../interfaces/Ipeople';
 import { ActivatedRoute, Router } from '@angular/router';
+import { userlogin } from '../interfaces/Iuserlogin';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-people',
@@ -11,7 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 /** people component*/
 export class PeopleComponent implements OnInit {
   /** people ctor */
-  constructor(private people: peopleService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private cookie: CookieService, private people: peopleService, private router: Router, private route: ActivatedRoute) { }
 
   @Input() userID: number
 
@@ -19,27 +21,29 @@ export class PeopleComponent implements OnInit {
   //person: people
   peep: people
   currentID: number
+  nowID: number
   previousID: number
   firstNameError: boolean
   lastNameError: boolean
 
   newPerson: people = {
     firstname: '',
-    lastname: ''
+    lastname: '',
+    loginid: null
   }
 
   ngOnInit(): void {
     this.people.getPeopleList().subscribe(
       (data: people) =>
         this.peopleList = data);
+    this.currentID = Number(this.cookie.get('id'));
+    this.newPerson.loginid = this.currentID;
   }
 
   showList(id: number) {
-    console.log('In showList, before reset this.id = ' + this.currentID)
-    this.previousID = this.currentID;
-    this.currentID = id;
-    console.log('In showList, after reset this.id = ' + this.currentID)
-    this.router.navigate(['/book', { outlets: { 'gifts': [this.currentID] } }]);
+    this.previousID = this.nowID;
+    this.nowID = id;
+    this.router.navigate(['/book', { outlets: { 'gifts': [this.nowID] } }]);
   }
 
   showList2(id: number) {
@@ -77,28 +81,19 @@ export class PeopleComponent implements OnInit {
       this.lastNameError = false;
       setTimeout(() => { this.showList(this.peep.id), this.ngOnInit() }, 100);
     }
-
   }
 
   removePerson(person: people) {
-    console.log('REMOVE FUNCTION - this.id = ' + this.currentID);
+    console.log('REMOVE FUNCTION - this.id = ' + this.nowID);
     this.people.removePerson(person);
-    console.log('Remove Peep component this.id(current list) = ' + this.currentID + ' removedID = ' + person.id);
-    if (this.previousID == person.id) {
+    console.log('Remove Peep component this.id(current list) = ' + this.nowID + ' removedID = ' + person.id);
+    if (this.nowID == person.id) {
       console.log(this.previousID == person.id);
       setTimeout(() => { this.showList(0) }, 100);
       setTimeout(() => { this.ngOnInit() }, 100);
     }
     else {
-      setTimeout(() => { this.showList2(this.previousID) }, 200);
       setTimeout(() => { this.ngOnInit() }, 100);
     }
   }
-
-
-
-
-
-
-
 }
