@@ -1,6 +1,6 @@
 &nbsp;
-<a *ngIf="this.complete.partyComplete > '0'" style="font-size:12px">Party - {{this.complete.partyComplete}}%&nbsp;&nbsp;</a>
-<a *ngIf="this.complete.giftComplete > '0'" style="font-size:12px">Gifts - {{this.complete.giftComplete}}%&nbsp;&nbsp;</a>
-<a *ngIf="this.complete.decorComplete > '0'" style="font-size:12px">Decorations - {{this.complete.decorComplete}}%&nbsp;&nbsp;</a>
+<a *ngIf="this.complete.partyComplete >= '0'" style="font-size:12px">Party - {{this.complete.partyComplete}}%&nbsp;&nbsp;</a>
+<a *ngIf="this.complete.giftComplete >= '0'" style="font-size:12px">Gifts - {{this.complete.giftComplete}}%&nbsp;&nbsp;</a>
+<a *ngIf="this.complete.decorComplete >= '0'" style="font-size:12px">Decorations - {{this.complete.decorComplete}}%&nbsp;&nbsp;</a>
 <a *ngIf="getComplete() > '0'" style="font-size:12px">|| Overall - {{getComplete()}}%</a>
 <!--<span><button (click)="log()">Console Log</button></span>-->
