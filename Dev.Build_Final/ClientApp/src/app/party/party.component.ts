@@ -9,7 +9,7 @@ import { completeService } from '../Services/complete';
 @Component({
     selector: 'app-party',
     templateUrl: './party.component.html',
-    styleUrls: ['./party.component.css']
+    styleUrls: ['./party.component.scss']
 })
 /** party component*/
 export class PartyComponent implements OnInit{

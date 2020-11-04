@@ -1,0 +1,94 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+code {
+  color: #e01a76;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*Shared Remove Button*/
+
+.removebutton {
+  float: right;
+  font-weight: bold;
+  border: hidden;
+  background: none
+}
+
+  .removebutton:hover {
+    color: red;
+    font-weight: normal;
+  }
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*Style for snow Background w/ Snow*/
+
+$b: 50;
+
+body {
+  height: 100%;
+  width: 100%;
+  background: radial-gradient(ellipse at bottom,rgb(28, 26, 52),rgb(71, 73, 125));
+  overflow: hidden;
+  filter: drop-shadow(0 0 10px white);
+
+}
+
+.b {
+  border-radius: 50%;
+  float: right;
+  margin-top: -210px;
+  margin-left: -2000px;
+  position:absolute;
+
+
+  @for $i from -1000 to $b {
+    $rw: random(10)+1;
+
+    $ra: random(20)+10;
+    $rd: random(10)+1;
+
+    $rc: random(10)+90;
+
+
+    &:nth-child(#{$i + 1}) {
+      margin-left: (percentage(1)/$b)*$i;
+      width: $rw+px;
+      height: $rw+px;
+      background: hsla(0,0%,$rc,.8);
+      box-shadow: 0 0 15px 10px hsla(0,0%,$rc,.5);
+      animation: fall $ra+s $rd+s infinite;
+    }
+  }
+}
+
+@keyframes fall {
+  0% {
+    transform: scale(0)
+  }
+
+  25% {
+    transform: scale(1);
+    top: -50px;
+  }
+
+  100% {
+    transform: scale(0);
+    top: 100%;
+  }
+}
+

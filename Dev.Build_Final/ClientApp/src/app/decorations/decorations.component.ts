@@ -9,7 +9,7 @@ import { completeService } from '../Services/complete';
 @Component({
     selector: 'app-decorations',
     templateUrl: './decorations.component.html',
-    styleUrls: ['./decorations.component.css']
+    styleUrls: ['./decorations.component.scss']
 })
 /** decorations component*/
 export class DecorationsComponent implements OnInit{

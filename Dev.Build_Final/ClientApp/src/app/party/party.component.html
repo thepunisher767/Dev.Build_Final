@@ -1,25 +1,29 @@
-<div style="border: 1px solid red">party Component</div>
 
+<div class="letter">
+  <ng-container>
+    <h1 style="text-align:center">Holiday Party To-Do List</h1>
+    <h1 style="text-align:center">~~~~~~~~~~~~~~~~~~~~~</h1><br />
+    <ng-container *ngFor="let item of partyList, index as i">
+      <ng-container *ngIf="item.loginid === currentID">
+        <div *ngIf="item.done =='1'; then Checked else unChecked">
 
-<ng-container *ngFor="let item of partyList, index as i">
-  <ng-container *ngIf="item.loginid === currentID">
-    <div *ngIf="item.done =='1'; then Checked else unChecked">
-
-    </div>
-    <ng-template #Checked>
-      <input type="checkbox" id="item{{i}}" (click)="checkbox(item)" Checked /><label for="item{{i}}"><del>{{item.description}}</del></label>
-      <button (click)="removeEvent(item)">X</button><br />
-    </ng-template>
-    <ng-template #unChecked>
-      <input type="checkbox" id="item{{i}}" (click)="checkbox(item)" /><label for="item{{i}}">{{item.description}}</label>
-      <button (click)="removeEvent(item)">X</button><br />
-    </ng-template>
+        </div>
+        <ng-template #Checked>
+          <input type="checkbox" id="item{{i}}" (click)="checkbox(item)" Checked /><label for="item{{i}}"><del>{{item.description}}</del></label>
+          <button (click)="removeEvent(item)" class="removebutton">X</button><br />
+        </ng-template>
+        <ng-template #unChecked>
+          <input type="checkbox" id="item{{i}}" (click)="checkbox(item)" /><label for="item{{i}}">{{item.description}}</label>
+          <button (click)="removeEvent(item)" class="removebutton">X</button><br />
+        </ng-template>
+      </ng-container>
+    </ng-container>
   </ng-container>
-</ng-container>
 
-<br />
-<form>
-  <!--<textarea name="newTask" placeholder="New Holiday Task" rows="1" cols="50" [(ngModel)]="newPartyItem.description"></textarea> <br />-->
-  <input type="text" name="newParty" placeholder="New Party item" [(ngModel)]="newPartyItem.description" /><ng-container *ngIf="error">Invalid Format. Try Again.</ng-container><br />
-  <button (click)="newItem()">Add Task</button>
-</form>
+  <br />
+  <form>
+    <!--<textarea name="newTask" placeholder="New Holiday Task" rows="1" cols="50" [(ngModel)]="newPartyItem.description"></textarea> <br />-->
+    <input type="text" name="newParty" placeholder="New Party item" [(ngModel)]="newPartyItem.description" /><ng-container *ngIf="error">Invalid Format. Try Again.</ng-container><br />
+    <button (click)="newItem()">Add Task</button>
+  </form>
+</div>

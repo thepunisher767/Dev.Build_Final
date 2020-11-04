@@ -10,7 +10,7 @@ import { completeService } from '../Services/complete';
 @Component({
   selector: 'app-gifts',
   templateUrl: './gifts.component.html',
-  styleUrls: ['./gifts.component.css']
+  styleUrls: ['./gifts.component.scss']
 })
 /** gifts component*/
 export class GiftsComponent implements OnInit {

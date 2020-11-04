@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'app-countdown',
     templateUrl: './countdown.component.html',
-    styleUrls: ['./countdown.component.css']
+    styleUrls: ['./countdown.component.scss']
 })
 /** countdown component*/
 export class CountdownComponent {

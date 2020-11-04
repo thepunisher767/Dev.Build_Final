@@ -7,7 +7,7 @@ import { CookieService } from "ngx-cookie-service"
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css']
+    styleUrls: ['./login.component.scss']
 })
 /** login component*/
 export class LoginComponent {

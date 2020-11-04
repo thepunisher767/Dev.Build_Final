@@ -9,7 +9,7 @@ import { decoration } from '../interfaces/Idecoration';
 @Component({
     selector: 'app-completed',
     templateUrl: './completed.component.html',
-    styleUrls: ['./completed.component.css']
+    styleUrls: ['./completed.component.scss']
 })
 /** completed component*/
 export class CompletedComponent {

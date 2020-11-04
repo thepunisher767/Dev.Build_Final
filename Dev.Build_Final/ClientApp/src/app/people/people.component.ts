@@ -8,7 +8,7 @@ import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-people',
   templateUrl: './people.component.html',
-  styleUrls: ['./people.component.css']
+  styleUrls: ['./people.component.scss']
 })
 /** people component*/
 export class PeopleComponent implements OnInit {

@@ -1,27 +1,30 @@
-<div style="border: 1px solid red">gifts Component</div>
-<h3 *ngIf="id != '0'">{{currentSelectedUser?.firstname}}'s Gift List</h3>
+<div class="letter">
+  <ng-container>
+    <h3 *ngIf="id != '0'">{{currentSelectedUser?.firstname}}'s Gift List</h3>
 
-<ng-container *ngFor="let item of giftList, index as i">
-  <ng-container *ngIf="displayGift(item)">
-    <div *ngIf="item.done =='1'; then Checked else unChecked"></div>
-    <ng-template #Checked>
-      <input type="checkbox" id="item{{i}}" (click)="checkbox(item)" Checked /><label for="item{{i}}"><del>{{item.description}}</del></label>
-      <button (click)="removeGift(item)">X</button><br />
-    </ng-template>
+    <ng-container *ngFor="let item of giftList, index as i">
+      <ng-container *ngIf="displayGift(item)">
+        <div *ngIf="item.done =='1'; then Checked else unChecked"></div>
+        <ng-template #Checked>
+          <input type="checkbox" id="item{{i}}" (click)="checkbox(item)" Checked /><label for="item{{i}}"><del>{{item.description}}</del></label>
+          <button (click)="removeGift(item)" class="removebutton">X</button><br />
+        </ng-template>
 
-    <ng-template #unChecked>
-      <input type="checkbox" id="item{{i}}" (click)="checkbox(item)" /><label for="item{{i}}">{{item.description}}</label>
-      <button (click)="removeGift(item)">X</button><br />
-    </ng-template>
+        <ng-template #unChecked>
+          <input type="checkbox" id="item{{i}}" (click)="checkbox(item)" /><label for="item{{i}}">{{item.description}}</label>
+          <button (click)="removeGift(item)" class="removebutton">X</button><br />
+        </ng-template>
+      </ng-container>
+    </ng-container>
+
+    <div *ngIf="!!giftList && id == '0'">Please make a selection</div>
+
+    <br />
+
+    <form *ngIf="id != '0'">
+      <input type="text" name="newGift" placeholder="New Gift" [(ngModel)]="newGiftItem.description" /><ng-container *ngIf="error">Invalid Format. Try Again.</ng-container>
+      <br />
+      <button (click)="newItem()">Add Gift</button>
+    </form>
   </ng-container>
-</ng-container>
-
-<div *ngIf="!!giftList && id == '0'">Please make a selection</div>
-
-<br />
-
-<form *ngIf="id != '0'">
-  <input type="text" name="newGift" placeholder="New Gift" [(ngModel)]="newGiftItem.description" /><ng-container *ngIf="error">Invalid Format. Try Again.</ng-container>
-  <br />
-  <button (click)="newItem()">Add Gift</button>
-</form>
+</div>

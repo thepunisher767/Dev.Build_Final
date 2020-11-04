@@ -5,7 +5,7 @@ import { userlogin } from '../interfaces/Iuserlogin';
 @Component({
     selector: 'app-book',
     templateUrl: './book.component.html',
-    styleUrls: ['./book.component.css']
+    styleUrls: ['./book.component.scss']
 })
 /** book component*/
 export class BookComponent {

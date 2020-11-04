@@ -1,17 +1,20 @@
-<div style="border: 1px solid red">people Component</div>
+<div class="letter">
+  <ng-container>
+    <h1 style="text-align:center">The Nice List</h1><br />
+    <div *ngFor="let p of peopleList">
+      <ng-container *ngIf="p.loginid === currentID">
+        <nav>
+          <a [routerLink]="['/book', {outlets: {'people': ['people'], 'gifts': [p.id]}}]" (click)="showList(p.id)">{{p.firstname}} {{p.lastname}}</a>
+          <button (click)="removePerson(p)" class="removebutton">X</button>
+        </nav>
+      </ng-container>
+    </div>
 
-<div *ngFor="let p of peopleList">
-  <ng-container *ngIf="p.loginid === currentID">
-  <nav>
-    <a [routerLink]="['/book', {outlets: {'people': ['people'], 'gifts': [p.id]}}]" (click)="showList(p.id)">{{p.firstname}} {{p.lastname}}</a>
-    <button (click)="removePerson(p)">Remove</button>
-  </nav>
+    <br />
+    <form>
+      <input type="text" name="newPerson" placeholder="First Name" [(ngModel)]="newPerson.firstname" /><ng-container *ngIf="firstNameError">Invalid Format. Try Again.</ng-container><br />
+      <input type="text" name="newPerson" placeholder="Last Name" [(ngModel)]="newPerson.lastname" /><ng-container *ngIf="lastNameError">Invalid Format. Try Again.</ng-container><br />
+      <button (click)="addPerson()">Add Person</button>
+    </form>
   </ng-container>
 </div>
-
-<br />
-<form>
-  <input type="text" name="newPerson" placeholder="First Name" [(ngModel)]="newPerson.firstname" /><ng-container *ngIf="firstNameError">Invalid Format. Try Again.</ng-container><br />
-  <input type="text" name="newPerson" placeholder="Last Name" [(ngModel)]="newPerson.lastname" /><ng-container *ngIf="lastNameError">Invalid Format. Try Again.</ng-container><br />
-  <button (click)="addPerson()">Add Person</button>
-</form>
