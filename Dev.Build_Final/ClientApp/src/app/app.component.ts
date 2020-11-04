@@ -43,4 +43,5 @@ export class AppComponent {
     console.log(this.login.setLoggedInUser());
     console.log('END LOG')
   }
+
 }

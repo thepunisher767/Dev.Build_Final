@@ -20,6 +20,7 @@ import { BookComponent } from './book/book.component';
 import { CountdownComponent } from './countdown/countdown.component';
 import { CookieService } from 'ngx-cookie-service';
 import { LoginComponent } from './login/login.component';
+import { MusicPlayerComponent } from './music-player/music-player.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { LoginComponent } from './login/login.component';
     DecorationsComponent,
     BookComponent,
     CountdownComponent,
-    LoginComponent
+    LoginComponent,
+    MusicPlayerComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
