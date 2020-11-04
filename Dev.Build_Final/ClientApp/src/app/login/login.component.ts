@@ -81,6 +81,7 @@ export class LoginComponent {
       }
       else {
         this.error = null;
+        this.success = true;
         console.log('user set to: ' + this.username);
         this.newUser.login = this.username;
         this.users.addUser(this.newUser).subscribe(

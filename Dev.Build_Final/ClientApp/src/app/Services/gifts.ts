@@ -14,11 +14,17 @@ export class giftService {
 
   giftUrl = '/api/gift';
 
+  //getAllGifts(id: number) {
+  //  return this.http.get<gift[]>(this.giftUrl + `/all/${id}`);
+  //}
 
-
-  getGiftsFromUser(id: number) {
-    return this.http.get<gift[]>(this.giftUrl + `/${id}`);
+  getGifts() {
+    return this.http.get<gift[]>(this.giftUrl);
   }
+
+  //getGiftsFromUser(id: number) {
+  //  return this.http.get<gift[]>(this.giftUrl + `/${id}`);
+  //}
 
   getUserName(id: number) {
     return this.http.get<people>(this.giftUrl + `/name/${id}`)

@@ -13,7 +13,7 @@ export class decorationService {
 
 
   getDecorations() {
-    return this.http.get(`${this.decorationUrl}`);
+    return this.http.get<decoration[]>(`${this.decorationUrl}`);
   }
 
   toggleDone(item: decoration) {

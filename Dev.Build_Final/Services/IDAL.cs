@@ -32,6 +32,7 @@ namespace Dev.Build_Final.Services
         void AddGift(gift myGift);
         void CompleteGift(gift myGift);
         IEnumerable<gift> GetPersonGifts(int userID);
+        IEnumerable<gift> GetAllGifts();
 
         ///Decorations/////////////////////////////////////
 

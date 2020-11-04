@@ -1,8 +1,8 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { partyService } from '../Services/party';
 import { party } from '../interfaces/Iparty';
-import { userlogin } from '../interfaces/Iuserlogin';
 import { CookieService } from 'ngx-cookie-service';
+import { completeService } from '../Services/complete';
 
 
 
@@ -13,8 +13,8 @@ import { CookieService } from 'ngx-cookie-service';
 })
 /** party component*/
 export class PartyComponent implements OnInit{
-    /** party ctor */
-  constructor(private cookie: CookieService, private party: partyService) { }
+  /** party ctor */
+  constructor(private cookie: CookieService, private party: partyService, public complete: completeService) { }
 
   partyList: party[]
   item: party
@@ -34,6 +34,29 @@ export class PartyComponent implements OnInit{
     );
     this.currentID = Number(this.cookie.get('id'));
     this.newPartyItem.loginid = this.currentID;
+    setTimeout(() => { this.complete.partyComplete = this.calculateComplete() }, 100);
+  }
+
+  calculateComplete(): number {
+    let tempList: party[] = [];
+    let numberComplete: number = 0;
+    for (let item of this.partyList) {
+      if (item.loginid === this.currentID) {
+        tempList.push(item);
+        if (item.done === true) {
+          numberComplete++;
+        }
+      }
+    }
+    this.complete.partyItems = tempList.length;
+    this.complete.partyItemsComplete = numberComplete;
+    var result = Number(((numberComplete / tempList.length) * 100).toFixed(2));
+    if (result) {
+      return result;
+    }
+    else {
+      return 0;
+    }
   }
 
   checkbox(item:party) {

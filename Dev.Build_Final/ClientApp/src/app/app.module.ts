@@ -20,6 +20,8 @@ import { BookComponent } from './book/book.component';
 import { CountdownComponent } from './countdown/countdown.component';
 import { CookieService } from 'ngx-cookie-service';
 import { LoginComponent } from './login/login.component';
+import { completeService } from './Services/complete';
+import { CompletedComponent } from './completed/completed.component';
 import { MusicPlayerComponent } from './music-player/music-player.component';
 
 @NgModule({
@@ -36,6 +38,7 @@ import { MusicPlayerComponent } from './music-player/music-player.component';
     BookComponent,
     CountdownComponent,
     LoginComponent,
+    CompletedComponent,
     MusicPlayerComponent
   ],
   imports: [
@@ -57,7 +60,7 @@ import { MusicPlayerComponent } from './music-player/music-player.component';
     BrowserAnimationsModule,
     MatGridListModule
   ],
-  providers: [ CookieService ],
+  providers: [ CookieService, completeService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

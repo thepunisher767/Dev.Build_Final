@@ -5,6 +5,7 @@ import { people } from '../interfaces/Ipeople';
 import { ActivatedRoute } from '@angular/router';
 import { userlogin } from '../interfaces/Iuserlogin';
 import { CookieService } from 'ngx-cookie-service';
+import { completeService } from '../Services/complete';
 
 @Component({
   selector: 'app-gifts',
@@ -14,14 +15,14 @@ import { CookieService } from 'ngx-cookie-service';
 /** gifts component*/
 export class GiftsComponent implements OnInit {
   /** gifts ctor */
-  constructor(private cookie: CookieService, private gifts: giftService, private route: ActivatedRoute) { }
+  constructor(private cookie: CookieService, private gifts: giftService, private route: ActivatedRoute, public complete: completeService) { }
 
   giftList: gift[]
   item: gift
-  id: number
+  id: number = null // gift list userid
   error: boolean
-  currentSelectedUser: people
-  currentID: number
+  currentSelectedUser: people //to get gift list username
+  currentID: number //logged in user id
 
   newGiftItem: gift = {
     description: '',
@@ -34,19 +35,52 @@ export class GiftsComponent implements OnInit {
     //console.log(this.giftList);
     this.route.params.subscribe((params: { id: number }) => {
       this.id = params.id;
-      //console.log('currentID = ' + this.id);
+      //console.log('id = ' +this.id);
       if (this.id != 0) {
         this.gifts.getUserName(this.id).subscribe(
           (data: people) =>
             this.currentSelectedUser = data);
       }
-      this.gifts.getGiftsFromUser(params.id).subscribe(
+      this.gifts.getGifts().subscribe(
         (data: gift[]) =>
           this.giftList = data);
     });
     this.currentID = Number(this.cookie.get('id'));
     this.newGiftItem.loginid = this.currentID;
+    setTimeout(() => { this.complete.giftComplete = this.calculateComplete() }, 100);
     //console.log(this.giftList);
+  }
+
+  calculateComplete(): number {
+    let tempList: gift[] = [];
+    let numberComplete: number = 0;
+    for (let item of this.giftList) {
+      if (item.loginid === this.currentID) {
+        tempList.push(item);
+        if (item.done === true) {
+          numberComplete++;
+        }
+      }
+    }
+    this.complete.giftItems = tempList.length;
+    this.complete.giftItemsComplete = numberComplete;
+    var result = Number(((numberComplete / tempList.length) * 100).toFixed(2));
+    if (result) {
+      return result;
+    }
+    else {
+      return 0;
+    }
+  }
+
+  displayGift(item: gift): boolean {
+    //console.log(item.loginid + ' = ' + this.currentID + ' || ' + item.userid + ' = ' + this.id);
+    if (item.loginid == this.currentID && item.userid == this.id) {
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 
   checkbox(item: gift) {

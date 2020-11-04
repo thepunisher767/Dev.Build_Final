@@ -14,7 +14,8 @@
   <app-nav-menu></app-nav-menu>
   <div class="container">
     <h2>Welcome, {{loggedInUser?.login}}</h2>
-    <h6>Not you? <button (click)="clearCookie()">Click here</button></h6>
+    <h6>Not you? <button (click)="clearCookie()">Click here</button><ng-container *ngIf="logout"><span style="color:orangered;"> ...Logging out...</span></ng-container></h6>
+    <br />
     <!--<button (click)="sendInfo()">Log</button>-->
     <router-outlet></router-outlet>
   </div>
@@ -22,13 +23,3 @@
     <app-music-player></app-music-player>
   </div>
 </body>
-
-<!--<div align="center" style="margin-bottom: 200px">
-  <app-music-player></app-music-player>
-</div>-->
-
-
-
-
-
-

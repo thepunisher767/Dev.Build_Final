@@ -20,8 +20,10 @@ export class AppComponent {
   }
 
   cookieSet: boolean
+  logout: boolean
 
   ngOnInit(): void {
+    this.logout = false;
     let cookie = this.cookie.get('id');
     if (cookie) {
       this.cookieSet = true;
@@ -34,7 +36,9 @@ export class AppComponent {
   }
 
   clearCookie() {
+    this.logout = true;
     this.login.clearCookies();
+    this.router.navigate(['/']);
     setTimeout(() => { location.reload() }, 300);
   }
 
@@ -43,5 +47,4 @@ export class AppComponent {
     console.log(this.login.setLoggedInUser());
     console.log('END LOG')
   }
-
 }

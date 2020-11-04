@@ -20,11 +20,25 @@ namespace Dev.Build_Final.Controllers
             this.DAL = DAL;
         }
 
-        [HttpGet("{userID}")]
-        public IEnumerable<gift> GetGifts(int userID)
+        //[HttpGet("{userID}")]
+        //public IEnumerable<gift> GetGifts(int userID)
+        //{
+        //    return DAL.GetPersonGifts(userID);
+        //}
+
+        //[HttpGet("all/{userID}")]
+        //public IEnumerable<gift> GetAllGifts(int userID) //used for completed calculations
+        //{
+        //    return DAL.GetAllGifts(userID);
+        //}
+
+        [HttpGet]
+        public IEnumerable<gift> GetAllGifts()
         {
-            return DAL.GetPersonGifts(userID);
+            return DAL.GetAllGifts();
         }
+
+
 
         [HttpPost("check")]
         public void toggle(gift desc)

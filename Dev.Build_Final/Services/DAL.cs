@@ -96,15 +96,11 @@ namespace Dev.Build_Final.Services
         {
             string query = $"SELECT * FROM gift WHERE userid = '{userID}'";
             return conn.Query<gift>(query);
-
-            /*
-            string query = "SELECT gift.description, gift.done ";
-            query += "FROM gift ";
-            query += "JOIN people ON people.id=gift.userid";
-            query += $"WHERE gift.userid='{userID}' ";
-            List<gift> favlist = conn.Query<QandA>(query).ToList();
-            return favlist;
-            */
+        }
+        public IEnumerable<gift> GetAllGifts()
+        {
+            string query = $"SELECT * FROM gift";
+            return conn.Query<gift>(query);
         }
 
         public void AddGift(gift myGift)
