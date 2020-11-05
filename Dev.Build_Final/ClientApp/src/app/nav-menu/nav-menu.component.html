@@ -99,9 +99,9 @@
 <div class='b'></div>
 <div class='b'></div>
 <header>
-  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-transparent border-bottom box-shadow mb-3">
     <div class="container">
-      <a class="navbar-brand" [routerLink]="['/']">.:Santa's Little Helper:.</a>
+      <a style="color:ghostwhite;" class="navbar-brand" [routerLink]="['/']">.:Santa's Little Helper:.</a>
       <app-countdown></app-countdown>
       <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
            [ngClass]="{ show: isExpanded }">
@@ -109,7 +109,7 @@
           <li class="nav-item"
               [routerLinkActive]="['link-active']"
               [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link text-dark" [routerLink]="['/book', {outlets: {'people': ['people'], 'gifts': ['0']}}]">Holiday List</a>
+            <a class="nav-link text-dark" style="background-color:transparent;"  [routerLink]="['/book', {outlets: {'people': ['people'], 'gifts': ['0']}}]">Holiday List</a>
             <!--<a class="nav-link text-dark" [routerLink]="['/book']">Holiday List</a>-->
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">

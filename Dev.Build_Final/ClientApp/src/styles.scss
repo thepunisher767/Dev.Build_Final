@@ -2,7 +2,7 @@
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+  color: #0366d6; //Color for clickable links ie names in name list
 }
 
 code {
@@ -34,9 +34,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   }
 
 
+.greetfont {
+  color:aliceblue;
+  font-size: 26px;
+}
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 /*Style for snow Background w/ Snow*/
-
 $b: 50;
 
 body {
