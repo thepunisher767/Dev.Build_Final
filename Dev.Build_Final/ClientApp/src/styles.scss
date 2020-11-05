@@ -38,6 +38,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   color:aliceblue;
   font-size: 26px;
 }
+
+.pagebutton {
+  background-color: transparent;
+  color: white;
+  font-family: sans-serif;
+  font-size: small;
+  border-color:ghostwhite;
+}
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 /*Style for snow Background w/ Snow*/
 $b: 50;
@@ -45,10 +54,9 @@ $b: 50;
 body {
   height: 100%;
   width: 100%;
-  background: radial-gradient(ellipse at bottom,rgb(28, 26, 52),rgb(71, 73, 125));
+  background: radial-gradient(ellipse at bottom,rgb(71, 73, 125),rgb(28, 26, 52));
   overflow: hidden;
   filter: drop-shadow(0 0 10px white);
-
 }
 
 .b {
